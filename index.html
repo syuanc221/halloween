@@ -220,6 +220,7 @@
         <p style="margin:0;font-size:15px;color:var(--ink-2)">回「去＋幾個人」就好。名額先到先得，包廂大小照人數訂 👻</p>
       </div>
 
+      <p id="full" class="msg err" hidden style="margin-bottom:6px">名額已滿 🎃 想候補的話直接 <a href="https://line.me/ti/p/lFQ50PCzKG" target="_blank" rel="noopener">LINE 我</a>。</p>
       <form id="form" novalidate>
         <label for="name">你的名字（或大家認得的暱稱）
           <input id="name" name="name" required maxlength="30" autocomplete="name" placeholder="例：Yoona">
@@ -274,7 +275,7 @@
     <div class="emoji">🎃</div>
     <h3 id="modalTitle">報名成功！</h3>
     <p id="modalText">10/31 見～記得變裝！<br>想確認報名或有任何問題，直接 LINE 我。</p>
-    <a class="line" id="lineBtn" href="LINE_URL" target="_blank" rel="noopener">LINE 聯絡 Yoona</a>
+    <a class="line" id="lineBtn" href="https://line.me/ti/p/lFQ50PCzKG" target="_blank" rel="noopener">LINE 聯絡 Yoona</a>
     <button type="button" class="close" id="modalClose">好，知道了</button>
   </div>
 </div>
@@ -286,7 +287,7 @@
   // 部署 Google Apps Script 後，把「網頁應用程式網址」貼到這裡：
   var API_URL = "https://script.google.com/macros/s/AKfycbwOMvf2BbMeO6NDy9Cjxg5t6zivNEnjxvncwz7hFjWlZEqi-IVaqmTI2mwZk30mf-basg/exec";
   var DEADLINE = new Date("2026-10-10T23:59:59+08:00");
-  var TARGET = 20; // 進度條的目標人數
+  var TARGET = 20; // 人數上限
   // ==================
 
   var $ = function (id) { return document.getElementById(id); };
@@ -296,8 +297,10 @@
     var total = stats.total != null ? stats.total : stats.count;
     $("count").textContent = total;
     $("countMeta").textContent = stats.count + " 人報名" + (stats.plusOnes ? "＋" + stats.plusOnes + " 位攜伴" : "") +
-      (stats.maybe ? "，" + stats.maybe + " 人再看看" : "") + "，目標 " + TARGET + " 人";
+      (stats.maybe ? "，" + stats.maybe + " 人再看看" : "") + "，上限 " + TARGET + " 人";
     $("bar").style.width = Math.min(100, total / TARGET * 100) + "%";
+    var full = total >= TARGET;
+    if (full && !submitBtn.disabled) { submitBtn.disabled = true; submitBtn.textContent = "已額滿"; $("full").hidden = false; }
     var ul = $("names"); ul.innerHTML = "";
     (stats.going || []).slice(0, 30).forEach(function (n) {
       var li = document.createElement("li"); li.textContent = n; ul.appendChild(li);
