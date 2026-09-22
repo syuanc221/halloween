@@ -133,6 +133,18 @@
   .cta a:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
   .cta.hide{transform:translateY(120%);opacity:0;pointer-events:none}
   body{padding-bottom:96px}
+
+  /* success modal */
+  .modal{position:fixed;inset:0;z-index:30;background:rgba(31,26,23,.55);display:flex;align-items:center;justify-content:center;padding:24px}
+  .modal .box{background:#fff;border:3px solid var(--ink);border-radius:26px;padding:26px 22px 22px;max-width:360px;width:100%;text-align:center;box-shadow:8px 8px 0 var(--orange);
+    animation:pop .25s cubic-bezier(.2,.9,.3,1.3)}
+  .modal .emoji{font-size:48px;line-height:1;margin-bottom:8px}
+  .modal h3{font-family:var(--display);font-weight:700;font-size:24px;margin:0 0 8px}
+  .modal p{margin:0 0 16px;color:var(--ink-2);font-size:15px}
+  .modal .line{display:block;text-decoration:none;font-family:var(--display);font-weight:600;font-size:17px;padding:13px;border:2px solid var(--ink);border-radius:14px;background:#06C755;color:#fff;margin-bottom:10px}
+  .modal .close{display:block;width:100%;font-family:var(--display);font-weight:600;font-size:16px;padding:12px;border:2px solid var(--ink);border-radius:14px;background:var(--cream);color:var(--ink);box-shadow:none}
+  @keyframes pop{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
+  @media (prefers-reduced-motion:reduce){.modal .box{animation:none}}
   @media (max-width:480px){
     .fee{grid-template-columns:1fr}
     .fee .loop{width:120px;height:auto}
@@ -257,6 +269,16 @@
   <footer>HAPPY HALLOWEEN · HOSTED BY YOONA</footer>
 </div>
 
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="box">
+    <div class="emoji">🎃</div>
+    <h3 id="modalTitle">報名成功！</h3>
+    <p id="modalText">10/31 見～記得變裝！<br>想確認報名或有任何問題，直接 LINE 我。</p>
+    <a class="line" id="lineBtn" href="LINE_URL" target="_blank" rel="noopener">LINE 聯絡 Yoona</a>
+    <button type="button" class="close" id="modalClose">好，知道了</button>
+  </div>
+</div>
+
 <div class="cta" id="cta"><a href="#h-rsvp" id="ctaBtn">我要報名 🎃</a></div>
 
 <script>
@@ -341,6 +363,7 @@
         msg.textContent = data.status === "去"
           ? (res.updated ? "已更新你的報名！" : "報名成功，10/31 見 🎃")
           : "收到，謝謝回覆！";
+        showModal(data.status, !!res.updated, name);
         try { localStorage.setItem("hw-name", name); } catch (_) {}
         load();
       })
@@ -360,6 +383,22 @@
       new IntersectionObserver(function(en){cta.classList.toggle("hide",en[0].isIntersecting);},{threshold:0.15}).observe(target);
     }
   })();
+
+  var modal = $("modal");
+  function showModal(status, updated, who) {
+    var t = $("modalTitle"), p = $("modalText"), em = document.querySelector(".modal .emoji");
+    if (status === "去") { em.textContent = "🎃"; t.textContent = updated ? "報名已更新！" : "報名成功！";
+      p.innerHTML = who + "，10/31 見～記得變裝！<br>想確認報名或有任何問題，直接 LINE 我。"; }
+    else if (status === "再看看") { em.textContent = "👻"; t.textContent = "收到，再看看";
+      p.innerHTML = "10/10 前決定好再回來改就行。<br>有問題可以直接 LINE 我。"; }
+    else { em.textContent = "😢"; t.textContent = "收到，下次見";
+      p.innerHTML = "謝謝回覆！改變心意的話 10/10 前回來改。<br>有問題可以直接 LINE 我。"; }
+    modal.hidden = false; $("modalClose").focus();
+  }
+  if ($("lineBtn").getAttribute("href") === "LINE_URL") $("lineBtn").hidden = true; // 還沒填 LINE 連結就先藏起來
+  $("modalClose").addEventListener("click", function () { modal.hidden = true; });
+  modal.addEventListener("click", function (e) { if (e.target === modal) modal.hidden = true; });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") modal.hidden = true; });
   tickDeadline(); setInterval(tickDeadline, 60000);
   load();
 </script>
