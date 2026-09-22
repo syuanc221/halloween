@@ -73,8 +73,9 @@
 
   .fee{background:#fff8;color:var(--ink);border:2px solid var(--ink);border-radius:18px;padding:16px;display:grid;grid-template-columns:1fr 120px;gap:16px;align-items:center}
   .fee .loop{border-radius:14px;border:2px solid var(--ink)}
-  .fee .big{font-family:var(--num);font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.01em;font-size:clamp(28px,8vw,36px);white-space:nowrap;line-height:1;color:var(--orange-deep)}
-  .fee .big small{font-size:16px;font-weight:500;color:var(--ink-2);margin-left:6px}
+  .fee>div{min-width:0}
+  .fee .big{font-family:var(--num);font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.01em;font-size:clamp(24px,6.5vw,34px);line-height:1.1;color:var(--orange-deep);overflow-wrap:anywhere}
+  .fee .big small{font-size:15px;font-weight:500;color:var(--ink-2);margin-left:4px;white-space:nowrap}
   .fee p{margin:8px 0 0;font-size:14px;color:var(--ink-2)}
 
   .timeline{margin:0;padding:0;list-style:none;border-left:2px dashed var(--ink);margin-left:8px}
@@ -130,12 +131,14 @@
   .cta a:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
   .cta.hide{transform:translateY(120%);opacity:0;pointer-events:none}
   body{padding-bottom:96px}
+  @media (max-width:480px){
+    .fee{grid-template-columns:1fr}
+    .fee .loop{width:120px;height:auto}
+  }
   @media (max-width:400px){
     .facts li{grid-template-columns:1fr;gap:4px}
     .dress{grid-template-columns:1fr}
     .dress .loop{max-width:140px}
-    .fee{grid-template-columns:1fr}
-    .fee .loop{width:100%;max-width:200px}
     .row2{grid-template-columns:1fr}
   }
   @media (prefers-reduced-motion:reduce){.bar i{transition:none}}
