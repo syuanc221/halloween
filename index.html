@@ -66,16 +66,16 @@
   .facts dd{margin:0;font-weight:500;font-variant-numeric:tabular-nums}
   .facts dd small{display:block;font-weight:400;color:var(--ink-2);font-size:14px;margin-top:2px}
 
-  .dress{display:grid;grid-template-columns:1fr 120px;gap:14px;align-items:center;background:var(--pink);border:2px solid var(--ink);border-radius:22px;padding:18px}
+  .dress{display:grid;grid-template-columns:1fr 120px;gap:14px;align-items:center;background:#fff8;border:2px solid var(--ink);border-radius:18px;padding:16px}
   .dress p{margin:0 0 6px}
   .dress ul{margin:0;padding-left:18px;font-size:15px}
   .dress .loop{border-radius:14px;border:2px solid var(--ink);object-fit:cover}
 
-  .fee{background:var(--ink);color:var(--cream);border-radius:22px;padding:20px 20px 16px;display:grid;grid-template-columns:1fr 120px;gap:16px;align-items:center}
-  .fee .loop{border-radius:14px;border:2px solid var(--gold)}
-  .fee .big{font-family:var(--num);font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.01em;font-size:clamp(28px,8vw,36px);white-space:nowrap;font-weight:700;line-height:1;color:var(--gold)}
-  .fee .big small{font-size:16px;font-weight:500;color:var(--cream);margin-left:6px}
-  .fee p{margin:8px 0 0;font-size:14px;color:#E8DFD2}
+  .fee{background:#fff8;color:var(--ink);border:2px solid var(--ink);border-radius:18px;padding:16px;display:grid;grid-template-columns:1fr 120px;gap:16px;align-items:center}
+  .fee .loop{border-radius:14px;border:2px solid var(--ink)}
+  .fee .big{font-family:var(--num);font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.01em;font-size:clamp(28px,8vw,36px);white-space:nowrap;line-height:1;color:var(--orange-deep)}
+  .fee .big small{font-size:16px;font-weight:500;color:var(--ink-2);margin-left:6px}
+  .fee p{margin:8px 0 0;font-size:14px;color:var(--ink-2)}
 
   .timeline{margin:0;padding:0;list-style:none;border-left:2px dashed var(--ink);margin-left:8px}
   .timeline li{position:relative;padding:0 0 16px 22px}
@@ -120,6 +120,16 @@
   .ghost .blend{mix-blend-mode:multiply}
   footer{margin-top:40px;text-align:center;font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--ink-2)}
 
+
+  /* sticky RSVP bar */
+  .cta{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));
+    background:linear-gradient(to top,var(--cream) 70%,transparent);display:flex;justify-content:center;
+    transition:transform .25s ease,opacity .25s ease}
+  .cta a{display:block;width:100%;max-width:520px;text-align:center;text-decoration:none;font-family:var(--display);font-size:19px;font-weight:600;
+    padding:15px;border:3px solid var(--ink);border-radius:18px;background:var(--orange);color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
+  .cta a:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+  .cta.hide{transform:translateY(120%);opacity:0;pointer-events:none}
+  body{padding-bottom:96px}
   @media (max-width:400px){
     .facts li{grid-template-columns:1fr;gap:4px}
     .dress{grid-template-columns:1fr}
@@ -242,10 +252,12 @@
   <footer>HAPPY HALLOWEEN · HOSTED BY YOONA</footer>
 </div>
 
+<div class="cta" id="cta"><a href="#h-rsvp" id="ctaBtn">我要報名 🎃</a></div>
+
 <script>
   // ====== 設定 ======
   // 部署 Google Apps Script 後，把「網頁應用程式網址」貼到這裡：
-  var API_URL = "";
+  var API_URL = "https://script.google.com/macros/s/AKfycbwOMvf2BbMeO6NDy9Cjxg5t6zivNEnjxvncwz7hFjWlZEqi-IVaqmTI2mwZk30mf-basg/exec";
   var DEADLINE = new Date("2026-10-10T23:59:59+08:00");
   var TARGET = 20; // 進度條的目標人數
   // ==================
@@ -332,6 +344,17 @@
   });
 
   try { var saved = localStorage.getItem("hw-name"); if (saved) $("name").value = saved; } catch (_) {}
+
+  // 固定在下方的報名按鈕：表單進入畫面時自動收起
+  (function(){
+    var cta=$("cta"), target=document.querySelector(".rsvp");
+    if(!cta||!target) return;
+    $("ctaBtn").addEventListener("click",function(e){e.preventDefault();target.scrollIntoView({behavior:"smooth",block:"start"});
+      setTimeout(function(){var n=$("name");if(n&&!n.hidden)n.focus({preventScroll:true});},600);});
+    if("IntersectionObserver" in window){
+      new IntersectionObserver(function(en){cta.classList.toggle("hide",en[0].isIntersecting);},{threshold:0.15}).observe(target);
+    }
+  })();
   tickDeadline(); setInterval(tickDeadline, 60000);
   load();
 </script>
