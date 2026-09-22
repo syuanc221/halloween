@@ -115,7 +115,8 @@
   .msg{margin:0;font-size:15px;min-height:1.5em}
   .msg.ok{color:var(--ok)} .msg.err{color:var(--err)}
 
-  .names{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+  .names-h{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--ink-2);margin:0 0 8px}
+  .names{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px;padding:0;list-style:none}
   .names li{background:var(--pink);border:2px solid var(--ink);border-radius:999px;padding:4px 12px;font-size:14px;font-weight:500}
   .names li.more{background:transparent;color:var(--ink-2)}
 
@@ -213,6 +214,10 @@
           <div class="bar" aria-hidden="true"><i id="bar"></i></div>
         </div>
       </div>
+      <div id="namesWrap" hidden>
+        <div class="names-h">已報名</div>
+        <ul class="names" id="names" aria-label="已報名的人"></ul>
+      </div>
       <div class="deadline" id="deadline">報名截止 10/10（六）23:59</div>
 
       <div id="lineMode" hidden>
@@ -258,7 +263,6 @@
         <p class="msg" id="msg" role="status" aria-live="polite"></p>
       </form>
 
-      <ul class="names" id="names" aria-label="已報名的人"></ul>
     </div>
   </section>
 
@@ -302,6 +306,7 @@
     var full = total >= TARGET;
     if (full && !submitBtn.disabled) { submitBtn.disabled = true; submitBtn.textContent = "已額滿"; $("full").hidden = false; }
     var ul = $("names"); ul.innerHTML = "";
+    $("namesWrap").hidden = !(stats.going && stats.going.length);
     (stats.going || []).slice(0, 30).forEach(function (n) {
       var li = document.createElement("li"); li.textContent = n; ul.appendChild(li);
     });
@@ -314,7 +319,7 @@
   function load() {
     if (!API_URL) {
       // 還沒接後端：隱藏表單與人數，改成 LINE 報名
-      form.hidden = true; document.querySelector(".count").hidden = true; $("names").hidden = true;
+      form.hidden = true; document.querySelector(".count").hidden = true; $("namesWrap").hidden = true;
       $("lineMode").hidden = false;
       return;
     }
