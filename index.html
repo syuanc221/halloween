@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Halloween at ONCOR</title>
+<meta name="description" content="10/31 萬聖節變裝夜 · ONCOR 信義 · 吃飯＋唱歌一站搞定，線上報名">
+<meta property="og:type" content="website">
+<meta property="og:title" content="10/31 萬聖節變裝夜 @ ONCOR">
+<meta property="og:description" content="週六 18:00 信義 ONCOR，吃飯唱歌一站搞定。10/10 前報名！">
+<meta property="og:image" content="https://syuanc221.github.io/halloween/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://syuanc221.github.io/halloween/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F4EBDD">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Noto+Sans+TC:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --cream:#F4EBDD; --cream-2:#EADFCC; --ink:#1F1A17; --ink-2:#5C5148;
+    --orange:#F0834A; --orange-deep:#D9652C; --pink:#F6C3C6; --gold:#E8B747;
+    --ok:#3F8F5B; --err:#C6473A;
+    --display:"Fredoka","Noto Sans TC",system-ui,sans-serif;
+    --num:"Bricolage Grotesque","Noto Sans TC",system-ui,sans-serif;
+    --body:"Noto Sans TC",system-ui,-apple-system,sans-serif;
+    --mono:"DM Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  [hidden]{display:none!important}
+  html,body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.65;
+    -webkit-font-smoothing:antialiased}
+  body{padding-inline:16px;padding-block:0 48px;
+    background-image:radial-gradient(var(--cream-2) 1px,transparent 1px);background-size:22px 22px}
+  img,video{max-width:100%;display:block}
+  a{color:var(--orange-deep)}
+  .wrap{max-width:520px;margin:0 auto}
+
+  /* hero */
+  .hero{position:relative;margin:16px 0 0;border-radius:28px;overflow:hidden;background:var(--cream-2);
+    aspect-ratio:9/16;max-width:100%;box-shadow:0 18px 40px -20px rgba(31,26,23,.35);border:3px solid var(--ink)}
+  .hero video,.hero img.poster{width:100%;height:100%;object-fit:cover}
+  .hero .tag{position:absolute;top:16px;left:16px;font-family:var(--mono);font-size:12px;letter-spacing:.14em;
+    background:var(--ink);color:var(--cream);padding:6px 10px;border-radius:999px}
+  .hero .date{position:absolute;top:16px;right:16px;background:var(--orange);color:var(--ink);border:2px solid var(--ink);
+    border-radius:16px;padding:6px 12px;text-align:center;font-family:var(--num);line-height:1.05;transform:rotate(4deg)}
+  .hero .date b{display:block;font-size:27px;font-weight:800;letter-spacing:-.01em}
+  .hero .date span{font-size:12px;font-weight:700;letter-spacing:.06em}
+
+  h1{font-family:var(--display);font-weight:700;font-size:clamp(34px,9vw,44px);line-height:1.05;margin:28px 0 6px;text-wrap:balance;letter-spacing:-.01em}
+  h1 em{font-style:normal;color:var(--orange-deep)}
+  .lede{margin:0;color:var(--ink-2);font-size:17px}
+  .lede strong{color:var(--ink)}
+
+  section{margin-top:36px}
+  h2{font-family:var(--display);font-weight:600;font-size:22px;margin:0 0 14px;display:flex;align-items:center;gap:10px}
+  h2::before{content:"";width:12px;height:12px;background:var(--gold);border:2px solid var(--ink);border-radius:50%;flex:none}
+
+  .facts{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+  .facts li{display:grid;grid-template-columns:72px 1fr;gap:12px;padding:14px 16px;background:#fff8;border:2px solid var(--ink);border-radius:18px}
+  .facts dt{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--ink-2);padding-top:4px}
+  .facts dd{margin:0;font-weight:500;font-variant-numeric:tabular-nums}
+  .facts dd small{display:block;font-weight:400;color:var(--ink-2);font-size:14px;margin-top:2px}
+
+  .dress{display:grid;grid-template-columns:1fr 120px;gap:14px;align-items:center;background:var(--pink);border:2px solid var(--ink);border-radius:22px;padding:18px}
+  .dress p{margin:0 0 6px}
+  .dress ul{margin:0;padding-left:18px;font-size:15px}
+  .dress .loop{border-radius:14px;border:2px solid var(--ink);object-fit:cover}
+
+  .fee{background:var(--ink);color:var(--cream);border-radius:22px;padding:20px 20px 16px;display:grid;grid-template-columns:1fr 120px;gap:16px;align-items:center}
+  .fee .loop{border-radius:14px;border:2px solid var(--gold)}
+  .fee .big{font-family:var(--num);font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.01em;font-size:clamp(28px,8vw,36px);white-space:nowrap;font-weight:700;line-height:1;color:var(--gold)}
+  .fee .big small{font-size:16px;font-weight:500;color:var(--cream);margin-left:6px}
+  .fee p{margin:8px 0 0;font-size:14px;color:#E8DFD2}
+
+  .timeline{margin:0;padding:0;list-style:none;border-left:2px dashed var(--ink);margin-left:8px}
+  .timeline li{position:relative;padding:0 0 16px 22px}
+  .timeline li::before{content:"";position:absolute;left:-7px;top:8px;width:10px;height:10px;border-radius:50%;background:var(--orange);border:2px solid var(--ink)}
+  .timeline time{font-family:var(--num);font-weight:700;font-size:13px;letter-spacing:.08em;display:block;color:var(--ink-2)}
+
+  /* rsvp */
+  .rsvp{background:#fff;border:3px solid var(--ink);border-radius:26px;padding:22px 20px;position:relative;
+    box-shadow:8px 8px 0 var(--orange)}
+  .count{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;margin-bottom:18px}
+  .count .n{font-family:var(--num);font-size:56px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+  .count .n small{font-size:16px;font-weight:500;color:var(--ink-2)}
+  .count .meta{font-size:14px;color:var(--ink-2)}
+  .bar{height:12px;background:var(--cream-2);border:2px solid var(--ink);border-radius:999px;overflow:hidden;margin-top:6px}
+  .bar i{display:block;height:100%;background:var(--orange);width:0;transition:width .6s ease}
+  .deadline{font-family:var(--num);font-weight:700;font-size:14px;font-variant-numeric:tabular-nums;background:var(--cream);border-radius:12px;padding:10px 12px;margin-bottom:18px}
+  .deadline b{color:var(--orange-deep)}
+
+  form{display:grid;gap:14px}
+  label{display:grid;gap:6px;font-size:14px;font-weight:500}
+  input,select,textarea{font:inherit;font-size:16px;padding:12px 14px;border:2px solid var(--ink);border-radius:14px;background:var(--cream);color:var(--ink);width:100%}
+  input:focus,select:focus,textarea:focus,button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+  textarea{min-height:70px;resize:vertical}
+  .seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .seg input{position:absolute;opacity:0;width:0;height:0}
+  .seg span{display:block;text-align:center;padding:12px 6px;border:2px solid var(--ink);border-radius:14px;background:var(--cream);font-weight:600;cursor:pointer}
+  .seg input:checked+span{background:var(--ink);color:var(--cream)}
+  .seg input:focus-visible+span{outline:3px solid var(--gold);outline-offset:2px}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  button{font-family:var(--display);font-size:20px;font-weight:600;padding:16px;border:3px solid var(--ink);border-radius:18px;
+    background:var(--orange);color:var(--ink);cursor:pointer;box-shadow:4px 4px 0 var(--ink);transition:transform .08s}
+  button:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+  button[disabled]{opacity:.55;cursor:not-allowed;box-shadow:none}
+  .msg{margin:0;font-size:15px;min-height:1.5em}
+  .msg.ok{color:var(--ok)} .msg.err{color:var(--err)}
+
+  .names{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+  .names li{background:var(--pink);border:2px solid var(--ink);border-radius:999px;padding:4px 12px;font-size:14px;font-weight:500}
+  .names li.more{background:transparent;color:var(--ink-2)}
+
+  .ghost{margin-top:40px;display:grid;grid-template-columns:110px 1fr;gap:16px;align-items:center;color:var(--ink-2);font-size:14px}
+  .ghost .blend{mix-blend-mode:multiply}
+  footer{margin-top:40px;text-align:center;font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--ink-2)}
+
+  @media (max-width:400px){
+    .facts li{grid-template-columns:1fr;gap:4px}
+    .dress{grid-template-columns:1fr}
+    .dress .loop{max-width:140px}
+    .fee{grid-template-columns:1fr}
+    .fee .loop{width:100%;max-width:200px}
+    .row2{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <video autoplay muted loop playsinline poster="witch-poster.jpg" aria-label="萬聖節女巫動畫">
+      <source src="witch.mp4" type="video/mp4">
+      <img class="poster" src="witch-poster.jpg" alt="萬聖節女巫插畫">
+    </video>
+    <span class="tag">YOU'RE INVITED</span>
+    <div class="date"><b>10.31</b><span>SAT · 18:00</span></div>
+  </div>
+
+  <h1>萬聖節<em>變裝夜</em><br>Sing &amp; Eat @ ONCOR</h1>
+  <p class="lede">吃飯＋唱歌一站搞定，包廂玩到爽。<strong>10/10（六）前</strong>回覆，我好去搶大包廂 🎃</p>
+
+  <section aria-labelledby="h-info">
+    <h2 id="h-info">活動資訊</h2>
+    <dl class="facts">
+      <li><dt>DATE</dt><dd>2026 / 10 / 31（六）18:00 進場<small>建議 17:45 象山站 3 號出口集合，訂位只保留 10 分鐘</small></dd></li>
+      <li><dt>PLACE</dt><dd><a href="https://maps.google.com/?q=ONCOR+響艷都市會所+信義店" target="_blank" rel="noopener">ONCOR 響艷都市會所 信義店</a><small>台北市信義區松仁路 101 號 B2 · 捷運象山站 3 號出口步行約 5 分鐘</small></dd></li>
+      <li><dt>VIBE</dt><dd>江振誠設計的台味菜單＋私人包廂 KTV<small>不是一般 KTV 的冷凍炸物，放心把晚餐留給這裡</small></dd></li>
+    </dl>
+  </section>
+
+  <section aria-labelledby="h-dress">
+    <h2 id="h-dress">變裝規則</h2>
+    <div class="dress">
+      <div>
+        <p><strong>一定要變裝！</strong>不用很認真，但一定要有一個「梗」。</p>
+        <p style="margin:0;font-size:15px;color:var(--ink-2)">當晚玩什麼保密，來了就知道 👻</p>
+      </div>
+      <video class="loop" autoplay muted loop playsinline poster="cat-poster.jpg" width="120" height="120" aria-label="戴巫師帽的黑貓"><source src="cat.mp4" type="video/mp4"></video>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-fee">
+    <h2 id="h-fee">費用</h2>
+    <div class="fee">
+      <div>
+      <div class="big">NT$1,500–2,000<small>／人</small></div>
+      <p>包廂費三小時均分＋餐飲酒水＋一成服務費的預估，實際依人數與點的東西多退少補。當天集合時收現金或轉帳都可以。</p>
+      </div>
+      <video class="loop" autoplay muted loop playsinline poster="ghost-reading-poster.jpg" width="120" aria-label="讀書的幽靈"><source src="ghost-reading.mp4" type="video/mp4"></video>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-rsvp">
+    <h2 id="h-rsvp">報名</h2>
+    <div class="rsvp">
+      <div class="count">
+        <div class="n"><span id="count">–</span><small> 人</small></div>
+        <div>
+          <div class="meta" id="countMeta">正在讀取報名人數…</div>
+          <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+        </div>
+      </div>
+      <div class="deadline" id="deadline">報名截止 10/10（六）23:59</div>
+
+      <div id="lineMode" hidden>
+        <p style="margin:0 0 6px;font-weight:600">報名方式：直接在 LINE 回我</p>
+        <p style="margin:0;font-size:15px;color:var(--ink-2)">回「去＋幾個人」就好。名額先到先得，包廂大小照人數訂 👻</p>
+      </div>
+
+      <form id="form" novalidate>
+        <label for="name">你的名字（或大家認得的暱稱）
+          <input id="name" name="name" required maxlength="30" autocomplete="name" placeholder="例：Yoona">
+        </label>
+
+        <fieldset style="border:0;padding:0;margin:0">
+          <legend style="font-size:14px;font-weight:500;margin-bottom:6px">來不來？</legend>
+          <div class="seg">
+            <label><input type="radio" name="status" value="去" id="s-go" checked><span>去！</span></label>
+            <label><input type="radio" name="status" value="再看看" id="s-maybe"><span>再看看</span></label>
+            <label><input type="radio" name="status" value="不去" id="s-no"><span>不去 😢</span></label>
+          </div>
+        </fieldset>
+
+        <div class="row2">
+          <label for="plusOnes">攜伴人數
+            <select id="plusOnes" name="plusOnes">
+              <option value="0">只有我</option>
+              <option value="1">+1</option>
+              <option value="2">+2</option>
+              <option value="3">+3</option>
+            </select>
+          </label>
+          <label for="contact">LINE 或手機（只有主辦看得到）
+            <input id="contact" name="contact" maxlength="60" autocomplete="tel">
+          </label>
+        </div>
+
+        <label for="note">備註（忌口、會晚到、想點的歌…）
+          <textarea id="note" name="note" maxlength="200"></textarea>
+        </label>
+
+        <button type="submit" id="submit">送出報名</button>
+        <p class="msg" id="msg" role="status" aria-live="polite"></p>
+      </form>
+
+      <ul class="names" id="names" aria-label="已報名的人"></ul>
+    </div>
+  </section>
+
+  <div class="ghost">
+    <video class="loop blend" autoplay muted loop playsinline poster="witch-ghost-poster.jpg" width="110" aria-label="騎掃帚的小幽靈"><source src="witch-ghost.mp4" type="video/mp4"></video>
+    <p>報名後想改？用同一個名字再送一次就會覆蓋。有問題直接 LINE 我。</p>
+  </div>
+
+  <footer>HAPPY HALLOWEEN · HOSTED BY YOONA</footer>
+</div>
+
+<script>
+  // ====== 設定 ======
+  // 部署 Google Apps Script 後，把「網頁應用程式網址」貼到這裡：
+  var API_URL = "";
+  var DEADLINE = new Date("2026-10-10T23:59:59+08:00");
+  var TARGET = 20; // 進度條的目標人數
+  // ==================
+
+  var $ = function (id) { return document.getElementById(id); };
+  var form = $("form"), msg = $("msg"), submitBtn = $("submit");
+
+  function render(stats) {
+    var total = stats.total != null ? stats.total : stats.count;
+    $("count").textContent = total;
+    $("countMeta").textContent = stats.count + " 人報名" + (stats.plusOnes ? "＋" + stats.plusOnes + " 位攜伴" : "") +
+      (stats.maybe ? "，" + stats.maybe + " 人再看看" : "") + "，目標 " + TARGET + " 人";
+    $("bar").style.width = Math.min(100, total / TARGET * 100) + "%";
+    var ul = $("names"); ul.innerHTML = "";
+    (stats.going || []).slice(0, 30).forEach(function (n) {
+      var li = document.createElement("li"); li.textContent = n; ul.appendChild(li);
+    });
+    if ((stats.going || []).length > 30) {
+      var more = document.createElement("li"); more.className = "more";
+      more.textContent = "＋" + (stats.going.length - 30) + " 人"; ul.appendChild(more);
+    }
+  }
+
+  function load() {
+    if (!API_URL) {
+      // 還沒接後端：隱藏表單與人數，改成 LINE 報名
+      form.hidden = true; document.querySelector(".count").hidden = true; $("names").hidden = true;
+      $("lineMode").hidden = false;
+      return;
+    }
+    fetch(API_URL + "?action=stats&_=" + Date.now())
+      .then(function (r) { return r.json(); })
+      .then(render)
+      .catch(function () { $("countMeta").textContent = "人數暫時讀不到，報名還是可以送出"; });
+  }
+
+  function tickDeadline() {
+    var ms = DEADLINE - new Date();
+    var el = $("deadline");
+    if (ms <= 0) {
+      el.innerHTML = "報名已截止 — 想加入直接 LINE 我";
+      submitBtn.disabled = true; submitBtn.textContent = "已截止";
+      return;
+    }
+    var d = Math.floor(ms / 864e5), h = Math.floor(ms % 864e5 / 36e5);
+    el.innerHTML = "報名截止 10/10（六）23:59 · 還剩 <b>" + d + " 天 " + h + " 小時</b>";
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var name = $("name").value.trim();
+    if (!name) { msg.className = "msg err"; msg.textContent = "先填一下名字～"; $("name").focus(); return; }
+    var data = {
+      name: name,
+      status: form.querySelector('input[name="status"]:checked').value,
+      plusOnes: $("plusOnes").value,
+      note: $("note").value.trim(),
+      contact: $("contact").value.trim()
+    };
+    submitBtn.disabled = true; submitBtn.textContent = "送出中…";
+    msg.className = "msg"; msg.textContent = "";
+
+    if (!API_URL) {
+      setTimeout(function () {
+        msg.className = "msg err"; msg.textContent = "還沒接上報名表單（API_URL 是空的）。";
+        submitBtn.disabled = false; submitBtn.textContent = "送出報名";
+      }, 400);
+      return;
+    }
+    // 不設 Content-Type，維持 simple request，Apps Script 才不會被 CORS 擋
+    fetch(API_URL, { method: "POST", body: JSON.stringify(data), redirect: "follow" })
+      .then(function (r) { return r.json(); })
+      .then(function (res) {
+        if (!res.ok) throw new Error(res.error === "closed" ? "報名已截止" : "送出失敗");
+        msg.className = "msg ok";
+        msg.textContent = data.status === "去"
+          ? (res.updated ? "已更新你的報名！" : "報名成功，10/31 見 🎃")
+          : "收到，謝謝回覆！";
+        try { localStorage.setItem("hw-name", name); } catch (_) {}
+        load();
+      })
+      .catch(function (err) { msg.className = "msg err"; msg.textContent = err.message + "，再試一次或直接 LINE 我。"; })
+      .finally(function () { submitBtn.disabled = false; submitBtn.textContent = "送出報名"; });
+  });
+
+  try { var saved = localStorage.getItem("hw-name"); if (saved) $("name").value = saved; } catch (_) {}
+  tickDeadline(); setInterval(tickDeadline, 60000);
+  load();
+</script>
+</body>
+</html>
