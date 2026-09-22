@@ -98,14 +98,16 @@
   form{display:grid;gap:14px}
   label{display:grid;gap:6px;font-size:14px;font-weight:500}
   input,select,textarea{font:inherit;font-size:16px;padding:12px 14px;border:2px solid var(--ink);border-radius:14px;background:var(--cream);color:var(--ink);width:100%}
+  input:not([type=radio]){height:52px;line-height:1.2}
   input:focus,select:focus,textarea:focus,button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
   textarea{min-height:70px;resize:vertical}
   .seg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .seg4{grid-template-columns:1.6fr 1fr 1fr 1fr}
   .seg input{position:absolute;opacity:0;width:0;height:0}
   .seg span{display:block;text-align:center;padding:12px 6px;border:2px solid var(--ink);border-radius:14px;background:var(--cream);font-weight:600;cursor:pointer}
   .seg input:checked+span{background:var(--ink);color:var(--cream)}
   .seg input:focus-visible+span{outline:3px solid var(--gold);outline-offset:2px}
-  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .row2{display:grid;gap:14px}
   button{font-family:var(--display);font-size:20px;font-weight:600;padding:16px;border:3px solid var(--ink);border-radius:18px;
     background:var(--orange);color:var(--ink);cursor:pointer;box-shadow:4px 4px 0 var(--ink);transition:transform .08s}
   button:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
@@ -139,7 +141,6 @@
     .facts li{grid-template-columns:1fr;gap:4px}
     .dress{grid-template-columns:1fr}
     .dress .loop{max-width:140px}
-    .row2{grid-template-columns:1fr}
   }
   @media (prefers-reduced-motion:reduce){.bar i{transition:none}}
 </style>
@@ -222,15 +223,16 @@
         </fieldset>
 
         <div class="row2">
-          <label for="plusOnes">攜伴人數
-            <select id="plusOnes" name="plusOnes">
-              <option value="0">只有我</option>
-              <option value="1">+1</option>
-              <option value="2">+2</option>
-              <option value="3">+3</option>
-            </select>
-          </label>
-          <label for="contact">LINE 或手機（只有主辦看得到）
+          <fieldset style="border:0;padding:0;margin:0;min-width:0">
+            <legend style="font-size:14px;font-weight:500;margin-bottom:6px">攜伴人數</legend>
+            <div class="seg seg4">
+              <label><input type="radio" name="plusOnes" value="0" id="p0" checked><span>只有我</span></label>
+              <label><input type="radio" name="plusOnes" value="1" id="p1"><span>+1</span></label>
+              <label><input type="radio" name="plusOnes" value="2" id="p2"><span>+2</span></label>
+              <label><input type="radio" name="plusOnes" value="3" id="p3"><span>+3</span></label>
+            </div>
+          </fieldset>
+          <label for="contact">LINE／手機（選填，主辦才看得到）
             <input id="contact" name="contact" maxlength="60" autocomplete="tel">
           </label>
         </div>
@@ -316,7 +318,7 @@
     var data = {
       name: name,
       status: form.querySelector('input[name="status"]:checked').value,
-      plusOnes: $("plusOnes").value,
+      plusOnes: form.querySelector('input[name="plusOnes"]:checked').value,
       note: $("note").value.trim(),
       contact: $("contact").value.trim()
     };
