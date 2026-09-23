@@ -18,17 +18,17 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Noto+Serif+TC:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
 <style>
   :root{
     --bg:#14060C; --bg-2:#1F0A14; --card:#23101A; --line:#4A1F33;
     --crimson:#8A1538; --velvet:#B4174E; --plum:#5B1E4A; --violet:#7A3BD6;
     --cream:#F1E3C8; --cream-2:#C9B79A; --gold:#C9A24B; --gold-2:#E4C979;
     --ok:#7FBF8A; --err:#E27A7A;
-    --display:"Cinzel Decorative","Noto Serif TC",serif;
-    --serif:"Cinzel","Noto Serif TC",serif;
-    --body:"Cormorant Garamond","Noto Serif TC",Georgia,serif;
-    --tc:"Noto Serif TC",Georgia,serif;
+    --display:"Cinzel Decorative","Noto Sans TC",serif;
+    --serif:"Cinzel","Noto Sans TC",serif;
+    --body:"Cormorant Garamond","Noto Sans TC",Georgia,serif;
+    --tc:"Noto Sans TC",system-ui,sans-serif;
   }
   *{box-sizing:border-box}
   [hidden]{display:none!important}
@@ -50,7 +50,7 @@
 
   .titleblock{text-align:center;margin-top:-24px;position:relative}
   .eyebrow{font-family:var(--serif);font-size:12px;letter-spacing:.32em;color:var(--gold);text-transform:uppercase}
-  h1{font-family:var(--tc);font-weight:700;font-size:clamp(30px,8vw,40px);line-height:1.2;margin:10px 0 6px;letter-spacing:.06em;color:var(--cream)}
+  h1{font-family:var(--tc);font-weight:900;font-size:clamp(30px,8vw,40px);line-height:1.2;margin:10px 0 6px;letter-spacing:.06em;color:var(--cream)}
   h1 em{font-style:normal;color:var(--gold-2)}
   .lede{margin:0;color:var(--cream-2);font-size:17px;font-family:var(--tc)}
   .lede strong{color:var(--cream)}
@@ -58,6 +58,13 @@
   .rule::before,.rule::after{content:"";flex:1;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent)}
   .rule span{font-size:14px;letter-spacing:.3em}
 
+
+  /* countdown */
+  .cd{margin:22px 0 0;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .cd div{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:12px 4px 10px;text-align:center}
+  .cd b{display:block;font-family:var(--serif);font-weight:700;font-size:clamp(26px,8vw,36px);line-height:1;color:var(--gold-2);font-variant-numeric:tabular-nums}
+  .cd span{display:block;margin-top:6px;font-family:var(--tc);font-size:12px;letter-spacing:.1em;color:var(--cream-2)}
+  .cd-label{font-family:var(--serif);font-size:11px;letter-spacing:.3em;color:var(--gold);margin-top:22px}
   section{margin-top:40px}
   h2{font-family:var(--serif);font-weight:700;font-size:14px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin:0 0 14px;text-align:center}
   .facts{display:grid;gap:10px;margin:0;padding:0;list-style:none}
@@ -130,7 +137,7 @@
   .modal{position:fixed;inset:0;z-index:30;background:rgba(10,2,6,.75);display:flex;align-items:center;justify-content:center;padding:24px}
   .modal .box{background:var(--card);border:1px solid var(--gold);border-radius:6px;padding:28px 22px 22px;max-width:360px;width:100%;text-align:center;font-family:var(--tc);animation:pop .25s ease-out}
   .modal .emoji{font-size:44px;line-height:1;margin-bottom:10px}
-  .modal h3{font-family:var(--tc);font-weight:700;font-size:22px;margin:0 0 8px;color:var(--gold-2);letter-spacing:.06em}
+  .modal h3{font-family:var(--tc);font-weight:900;font-size:22px;margin:0 0 8px;color:var(--gold-2);letter-spacing:.06em}
   .modal p{margin:0 0 18px;color:var(--cream-2);font-size:15px}
   .modal .line{display:block;text-decoration:none;font-family:var(--tc);font-weight:700;font-size:16px;padding:13px;border-radius:4px;background:#06C755;color:#fff;margin-bottom:10px}
   .modal .close{display:block;width:100%;font-family:var(--tc);font-size:15px;letter-spacing:.1em;padding:12px;border:1px solid var(--line);border-radius:4px;background:transparent;color:var(--cream)}
@@ -151,6 +158,13 @@
     <div class="eyebrow">You're invited</div>
     <h1>萬聖節<em>變裝夜</em></h1>
     <p class="lede">吃飯＋唱歌一站搞定，包廂玩到爽。<strong>10/10（六）前</strong>回覆，我好去搶大包廂。</p>
+    <div class="cd-label">COUNTDOWN</div>
+    <div class="cd" id="cd" aria-live="off">
+      <div><b id="cdD">–</b><span>天</span></div>
+      <div><b id="cdH">–</b><span>時</span></div>
+      <div><b id="cdM">–</b><span>分</span></div>
+      <div><b id="cdS">–</b><span>秒</span></div>
+    </div>
     <div class="rule"><span>✦</span></div>
   </div>
 
@@ -380,6 +394,18 @@
   $("modalClose").addEventListener("click", function () { modal.hidden = true; });
   modal.addEventListener("click", function (e) { if (e.target === modal) modal.hidden = true; });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") modal.hidden = true; });
+
+  // 活動倒數
+  var EVENT_AT = new Date("2026-10-31T18:00:00+08:00");
+  function tickEvent() {
+    var ms = EVENT_AT - new Date(), pad = function (n) { return n < 10 ? "0" + n : "" + n; };
+    if (ms <= 0) { $("cd").innerHTML = '<div style="grid-column:1/-1"><b>🎃</b><span>派對開始，人呢？</span></div>'; return; }
+    $("cdD").textContent = Math.floor(ms / 864e5);
+    $("cdH").textContent = pad(Math.floor(ms % 864e5 / 36e5));
+    $("cdM").textContent = pad(Math.floor(ms % 36e5 / 6e4));
+    $("cdS").textContent = pad(Math.floor(ms % 6e4 / 1e3));
+  }
+  tickEvent(); setInterval(tickEvent, 1000);
   tickDeadline(); setInterval(tickDeadline, 60000);
   load();
 </script>
