@@ -56,6 +56,12 @@
   .lede{margin:0;color:var(--ink-2);font-size:17px}
   .lede strong{color:var(--ink)}
 
+
+  /* countdown */
+  .cd{margin:18px 0 0;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .cd div{background:#fff8;border:2px solid var(--ink);border-radius:16px;padding:10px 4px 8px;text-align:center}
+  .cd b{display:block;font-family:var(--num);font-weight:800;font-size:clamp(26px,8vw,36px);line-height:1;color:var(--orange-deep);font-variant-numeric:tabular-nums}
+  .cd span{display:block;margin-top:4px;font-size:12px;color:var(--ink-2)}
   section{margin-top:36px}
   h2{font-family:var(--display);font-weight:600;font-size:22px;margin:0 0 14px;display:flex;align-items:center;gap:10px}
   h2::before{content:"";width:12px;height:12px;background:var(--gold);border:2px solid var(--ink);border-radius:50%;flex:none}
@@ -172,6 +178,12 @@
 
   <h1>萬聖節<em>變裝夜</em><br>Sing &amp; Eat @ ONCOR</h1>
   <p class="lede">吃飯＋唱歌一站搞定，包廂玩到爽。<strong>10/10（六）前</strong>回覆，我好去搶大包廂 🎃</p>
+  <div class="cd" id="cd" aria-live="off">
+    <div><b id="cdD">–</b><span>天</span></div>
+    <div><b id="cdH">–</b><span>時</span></div>
+    <div><b id="cdM">–</b><span>分</span></div>
+    <div><b id="cdS">–</b><span>秒</span></div>
+  </div>
 
   <section aria-labelledby="h-info">
     <h2 id="h-info">活動資訊</h2>
@@ -404,6 +416,18 @@
   $("modalClose").addEventListener("click", function () { modal.hidden = true; });
   modal.addEventListener("click", function (e) { if (e.target === modal) modal.hidden = true; });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") modal.hidden = true; });
+
+  // 活動倒數
+  var EVENT_AT = new Date("2026-10-31T18:00:00+08:00");
+  function tickEvent() {
+    var ms = EVENT_AT - new Date(), pad = function (n) { return n < 10 ? "0" + n : "" + n; };
+    if (ms <= 0) { $("cd").innerHTML = '<div style="grid-column:1/-1"><b>🎃</b><span>派對開始，人呢？</span></div>'; return; }
+    $("cdD").textContent = Math.floor(ms / 864e5);
+    $("cdH").textContent = pad(Math.floor(ms % 864e5 / 36e5));
+    $("cdM").textContent = pad(Math.floor(ms % 36e5 / 6e4));
+    $("cdS").textContent = pad(Math.floor(ms % 6e4 / 1e3));
+  }
+  tickEvent(); setInterval(tickEvent, 1000);
   tickDeadline(); setInterval(tickDeadline, 60000);
   load();
 </script>
