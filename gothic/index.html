@@ -18,16 +18,16 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
 <style>
   :root{
     --bg:#14060C; --bg-2:#1F0A14; --card:#23101A; --line:#4A1F33;
     --crimson:#8A1538; --velvet:#B4174E; --plum:#5B1E4A; --violet:#7A3BD6;
     --cream:#F1E3C8; --cream-2:#C9B79A; --gold:#C9A24B; --gold-2:#E4C979;
     --ok:#7FBF8A; --err:#E27A7A;
-    --display:"Cinzel Decorative","Noto Sans TC",serif;
-    --serif:"Cinzel","Noto Sans TC",serif;
-    --body:"Cormorant Garamond","Noto Sans TC",Georgia,serif;
+    --display:"Playfair Display","Noto Sans TC",serif;
+    --serif:"Playfair Display","Noto Sans TC",serif;
+    --body:"Playfair Display","Noto Sans TC",Georgia,serif;
     --tc:"Noto Sans TC",system-ui,sans-serif;
   }
   *{box-sizing:border-box}
@@ -87,7 +87,7 @@
   .fee p{margin:8px 0 0;font-size:14px;color:var(--cream-2)}
 
   /* rsvp */
-  .rsvp{background:var(--card);border:1px solid var(--gold);border-radius:6px;padding:22px 20px;position:relative;box-shadow:0 0 0 6px var(--bg),0 0 0 7px var(--line)}
+  .rsvp{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:22px 20px;position:relative}
   .count{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;margin-bottom:18px}
   .count .n{font-family:var(--serif);font-size:54px;font-weight:700;line-height:1;color:var(--gold-2);font-variant-numeric:tabular-nums}
   .count .n small{font-size:14px;color:var(--cream-2);font-family:var(--tc)}
@@ -112,11 +112,11 @@
   .seg4{grid-template-columns:1.6fr 1fr 1fr 1fr}
   .seg input{position:absolute;opacity:0;width:0;height:0}
   .seg span{display:block;text-align:center;padding:11px 6px;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--cream);cursor:pointer}
-  .seg input:checked+span{background:var(--crimson);border-color:var(--gold);color:#fff}
+  .seg input:checked+span{background:var(--velvet);border-color:var(--velvet);color:#fff}
   .seg input:focus-visible+span{outline:2px solid var(--gold);outline-offset:2px}
   .row2{display:grid;gap:14px}
-  button{font-family:var(--serif);font-size:16px;font-weight:700;letter-spacing:.2em;padding:16px;border:1px solid var(--gold);border-radius:4px;
-    background:linear-gradient(135deg,var(--velvet),var(--crimson));color:#fff;cursor:pointer;transition:filter .15s}
+  button{font-family:var(--serif);font-size:16px;font-weight:700;letter-spacing:.14em;padding:16px;border:0;border-radius:4px;
+    background:var(--velvet);color:#fff;cursor:pointer;transition:filter .15s;box-shadow:0 8px 24px -10px rgba(180,23,78,.8)}
   button:hover{filter:brightness(1.1)}
   button[disabled]{opacity:.55;cursor:not-allowed}
   .msg{margin:0;font-size:15px;min-height:1.5em;font-family:var(--tc)}
@@ -129,18 +129,18 @@
   /* sticky CTA */
   .cta{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:10px 16px calc(12px + env(safe-area-inset-bottom,0px));
     background:linear-gradient(to top,var(--bg) 65%,transparent);display:flex;justify-content:center;transition:transform .25s ease,opacity .25s ease}
-  .cta a{display:block;width:100%;max-width:520px;text-align:center;text-decoration:none;font-family:var(--serif);font-size:15px;font-weight:700;letter-spacing:.24em;
-    padding:16px;border:1px solid var(--gold);border-radius:4px;background:linear-gradient(135deg,var(--velvet),var(--crimson));color:#fff;box-shadow:0 10px 30px -10px rgba(180,23,78,.7)}
+  .cta a{display:block;width:100%;max-width:520px;text-align:center;text-decoration:none;font-family:var(--serif);font-size:15px;font-weight:700;letter-spacing:.16em;
+    padding:16px;border:0;border-radius:4px;background:var(--velvet);color:#fff;box-shadow:0 10px 30px -10px rgba(180,23,78,.8)}
   .cta.hide{transform:translateY(120%);opacity:0;pointer-events:none}
 
   /* modal */
   .modal{position:fixed;inset:0;z-index:30;background:rgba(10,2,6,.75);display:flex;align-items:center;justify-content:center;padding:24px}
-  .modal .box{background:var(--card);border:1px solid var(--gold);border-radius:6px;padding:28px 22px 22px;max-width:360px;width:100%;text-align:center;font-family:var(--tc);animation:pop .25s ease-out}
+  .modal .box{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:28px 22px 22px;max-width:360px;width:100%;text-align:center;font-family:var(--tc);animation:pop .25s ease-out}
   .modal .emoji{font-size:44px;line-height:1;margin-bottom:10px}
   .modal h3{font-family:var(--tc);font-weight:900;font-size:22px;margin:0 0 8px;color:var(--gold-2);letter-spacing:.06em}
   .modal p{margin:0 0 18px;color:var(--cream-2);font-size:15px}
   .modal .line{display:block;text-decoration:none;font-family:var(--tc);font-weight:700;font-size:16px;padding:13px;border-radius:4px;background:#06C755;color:#fff;margin-bottom:10px}
-  .modal .close{display:block;width:100%;font-family:var(--tc);font-size:15px;letter-spacing:.1em;padding:12px;border:1px solid var(--line);border-radius:4px;background:transparent;color:var(--cream)}
+  .modal .close{display:block;width:100%;font-family:var(--tc);font-size:15px;letter-spacing:.1em;padding:12px;border:0;border-radius:4px;background:var(--bg);color:var(--cream)}
   @keyframes pop{from{transform:scale(.92);opacity:0}to{transform:scale(1);opacity:1}}
   @media (prefers-reduced-motion:reduce){.modal .box{animation:none}.bar i{transition:none}}
   @media (max-width:400px){.facts li{grid-template-columns:1fr;gap:4px}}
@@ -183,7 +183,6 @@
       <img src="hands.jpg" alt="Trick or Treat 票券" loading="lazy">
       <div class="t">
         <p><strong>一定要變裝！</strong>不用很認真，但一定要有一個「梗」。</p>
-        <p>當晚玩什麼保密，來了就知道。</p>
       </div>
     </div>
   </section>
